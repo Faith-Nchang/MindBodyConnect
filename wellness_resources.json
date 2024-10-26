@@ -1,0 +1,60 @@
+{
+  "wellness_resources": [ 
+    
+    {
+      "title": "Beginner Yoga Routine",
+      "description": "A gentle yoga routine to improve flexibility and reduce stress.",
+      "category": "Fitness"
+    },
+    {
+      "title": "Mindfulness Meditation",
+      "description": "Techniques to enhance mental clarity and reduce anxiety.",
+      "category": "Mental Health"
+    },
+    {
+      "title": "Vegan Nutrition", 
+	"description": "A balanced vegan meal can include a variety of plant-based foods to ensure you're getting a wide range of essential nutrients.",
+	"category": "Nutrition"
+	},
+  {
+"title": "Cardio Workout",         
+"description": "A best cardio can include High Intensity Interval training (HIIT) where you can burn calories efficiently and improve cardio fitness.",
+"category": "Fitness"
+},
+
+{
+"title": "Lifting Weights",
+"description": "Strength training by lifting weights can help boost your metabolism, for example building muscles while also increasing your metabolic rate.",
+"category": "Fitness"
+}, 
+
+{
+"title": "Good Sleep",
+"description": "Getting at least eight hours of sleep can help improve your mood. Try to avoid electronics before bed.",
+"category": "Mental Health"
+},
+
+{
+"title": "Take breaks",
+"description": "Spending too much time online can negatively affect your mental health. Try taking breaks and do other activities like enjoying nature, reading, etc.",
+"cateogory": "Mental Health"
+}, 
+
+{
+"title": "Drink water",
+"description": "Drink plenty of water, or other fluids to stay hydrated. Our body needs water to function effectively. It is recommended to drink about 8 cups of water each day.",
+"category": "Nutrition"
+},
+{
+"title": "Eat less processed foods",
+"description": "Limit processed and packaged snacks, and eat more fresh, unprocessed foods.",
+"category": "Nutrition"
+},
+{
+"title": "Eat mindfully",
+"description": "Be aware of your body’s hunger and satiety signals, and savor your food.",
+"category": "Nutrition"
+}
+
+  ]
+}
