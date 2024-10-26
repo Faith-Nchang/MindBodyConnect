@@ -1,118 +1,58 @@
-import {NextResponse} from 'next/server'
-import { Pinecone } from '@pinecone-database/pinecone';
-import OpenAI from 'openai'
+import {NextResponse} from 'next/server' // Import NextResponse from Next.js for handling responses
+import OpenAI from 'openai' // Import OpenAI library for interacting with the OpenAI API
 
-
-
-const systemPrompt = `
-
-You are an advanced assistant for the "Rate My Professor" app, designed to help students find the best professors according to their specific queries. Your role involves retrieving and generating professor information that aligns with user preferences. Follow these detailed steps to fulfill user requests:
-
-1. Query Analysis:
-   - Extract Key Information: Carefully analyze the user’s query to identify key details such as the subject of interest, preferred teaching style, ratings, or any specific attributes they are looking for (e.g., engaging, practical, lenient).
-   - Understand Preferences: Recognize nuances in the query, such as requests for high ratings, specific areas of expertise, or teaching methodology preferences.
-
-2. Information Retrieval:
-   - Access Data Sources: Retrieve data from your knowledge base, including professor names, subjects they teach, ratings, and reviews.
-   - Filter and Sort: Filter professors based on the subject and attributes mentioned in the query. Sort the results to prioritize those with higher ratings and more relevant reviews.
-
-3. Ranking and Selection:
-   - Evaluate Relevance: Rank the professors based on how well they match the user’s criteria. Consider factors such as overall rating, user reviews, and alignment with the specified attributes.
-   - Select Top Professors: Choose the top 3 professors who best meet the user’s requirements. Ensure diversity in the selection if multiple professors meet the criteria equally.
-
-4. Response Generation:
-   return the top 3 professors that match the user's query.
-   Ensure the response is in the following format making sure each bullet goes on a separate line
-    1.  Professor's name
-        - Subject: Subject they teach
-        - Rating: Star rating (out of 5)
-        - Review: A short summary of their reviews
-        - Reason: give a reason for suggestings these professors
-5. Accuracy and Relevance:
-   - Verify Information: Double-check the accuracy of the information presented to ensure it is up-to-date and relevant.
-   - User-Centric Focus: Tailor the recommendations to address the user’s specific needs and preferences. Provide additional context if necessary to help the user make an informed decision.
-
-Additional Notes:
-- Adaptability: Be prepared to adjust the response if the query is ambiguous or lacks specific details. Seek clarification if needed.
-- User Experience: Aim to enhance the user experience by providing personalized and relevant recommendations that meet the user’s educational goals.
-
+import 'dotenv/config';
+const systemPrompt = `System prompt of CareerCompassAI! 🎓🚀
+You are the virtual assistant to CareerCompassAI, here to help you explore and navigate your career path. Whether users are looking for career advice, job trends, salary comparisons, or skill requirements, you got them covered. Here's how you can assist users:
+1. Career Recommendations: Users can share their skills, interests, and goals, and you'll provide personalized career suggestions.
+2. Job Trends: Get insights into current job market trends and industry demands.
+3. Salary Insights: Compare salaries for various career options to make informed decisions.
+4. Skill Requirements: Learn about the skills and qualifications needed for different career paths.
+5. General Advice: Ask me any questions about career planning, job searching, and professional development.
+To get started, simply tell me about your interests, skills, and goals. If you need help with something specific, just ask!
+Please return the results in a nicely formatted way. Adding bullets where neccessary
+if there are bullets, formate them as follows
+ 1. give the first point 
+ 2. continue with the next
+ Each bullet should be on a new line
 `;
 
 
-export async function POST(req)
-{
-    const data = await req.json()
-    const pc = new Pinecone({
-        apiKey: process.env.PINECONE_API_KEY,
-    })
+// POST function to handle incoming requests
+export async function POST(req) {
+   console.log(process.env.OPENAI_API_KEY);
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  }) // Create a new instance of the OpenAI client
+  const data = await req.json() // Parse the JSON body of the incoming request
 
-    // getting the vectors from the data base
-    const index = pc.index('rag').namespace('ms1')
+  // Create a chat completion request to the OpenAI API
+  const completion = await openai.chat.completions.create({
+    messages: [{role: 'system', content: systemPrompt}, ...data], // Include the system prompt and user messages
+    model: 'gpt-4o', // Specify the model to use
+    stream: true, // Enable streaming responses
+  })
 
-    const openai = new OpenAI({
-        apiKey:process.env.OPENAI_API_KEY
-    })
-
-    // last message
-    const text = data[data.length - 1].content
-
-    const embedding = await openai.embeddings.create({
-        model: 'text-embedding-3-small',
-        input: text,
-        encoding_format: 'float',
-      })
-    // query our data base using these embeddings
-    const results = await index.query(({
-        topK: 3,
-        includeMetadata: true,
-        vector: embedding.data[0].embedding,
-    }))
-
-    let resultString = 'Returned results from vector db (done automatically)'
-
-    results.matches.forEach((match) => {
-        resultString += `\n
-        professor: ${match.id}
-        Review: ${match.metadata.review}
-        Subject: ${match.metadata.subject}
-        Stars ${match.metadata.rating}
-        \n\n
-        `
-    })
-
-    const lastMessage = data[data.length -1]
-    const lastMessageContent = lastMessage.content + resultString
-    const lastDataWithoutLastMessage = data.slice(0, data.length-1)
-
-    const completion = await openai.chat.completions.create({
-        messages: [
-          {role: 'system', content: systemPrompt},
-          ...lastDataWithoutLastMessage,
-          {role: 'user', content: lastMessageContent},
-        ],
-        model: 'gpt-3.5-turbo',
-        stream: true,
-      })
-
-    const stream = new ReadableStream({
-        async start(controller) {
-            const encoder = new TextEncoder()
-            try{
-                for await (const chunk of completion) {
-                    const content = chunk.choices[0]?.delta?.content
-                    if (content) {
-                        const text = encoder.encode(content)
-                        controller.enqueue(text)
-                    }
-                }
-            }
-            catch (err) {
-                controller.error(err)
-            } finally {
-                controller.close()
-            }
+  // Create a ReadableStream to handle the streaming response
+  const stream = new ReadableStream({
+    async start(controller) {
+      const encoder = new TextEncoder() // Create a TextEncoder to convert strings to Uint8Array
+      try {
+        // Iterate over the streamed chunks of the response
+        for await (const chunk of completion) {
+          const content = chunk.choices[0]?.delta?.content // Extract the content from the chunk
+          if (content) {
+            const text = encoder.encode(content) // Encode the content to Uint8Array
+            controller.enqueue(text) // Enqueue the encoded text to the stream
+          }
         }
-    })
+      } catch (err) {
+        controller.error(err) // Handle any errors that occur during streaming
+      } finally {
+        controller.close() // Close the stream when done
+      }
+    },
+  })
 
-    return new NextResponse(stream)
+  return new NextResponse(stream) // Return the stream as the response
 }
