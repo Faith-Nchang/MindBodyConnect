@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Mind Body Thrive
 
-## Getting Started
+# Story
+As people enthusiastic about both physical and mental health wellness, we were interested in building something that not only allows us to keep track of our health and progress, but also find others with similar interests for accountability and social support. Although  fitness apps have fitness tracking, mental health support especially through AI, or both. Some wellness apps often lack a holistic approach, forcing users to juggle multiple platforms for fitness, mental health, or social engagement, which creates a fragmented experience. Additionally, limited support for motivation, goal setting, and access to nearby resources can make it difficult for users to stay consistent in their wellness routines and self-care practices.
 
-First, run the development server:
+How Mind Body Thrive Solves the Problem
+Mind Body Thrive  not only provides a way for users to track their workouts, calories burned, and nutritional intake and get insights about the likelihood of gaining or loosing weight, but it also provides two means of mental health support, accountability, and social interactions. In Mind Body Thrive, users can get advice and have discussions from a conversational chatbot. As a means of peer and social interaction, finding others with similar interests, and share their progress, users can join groups with similar interests and support each other to attain their fitness goals.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Frontend**: Next.js, React (for creating a responsive UI and handling page navigation)
+- **Backend**: Firebase (for database storage, user authentication, and real-time data handling)
+- **APIs & Libraries**:
+  - Firebase Firestore for database management
+  - Clerk for user authentication
+  - Chart.js for interactive and responsive charting
+  - Tailwind CSS for modern and clean UI styling
+- **Additional Tools**: React Icons for UI elements, dotenv for managing environment variables
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### How It Works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **User Authentication**: Users sign in through Clerk, ensuring secure access to personalized data. If a user is not signed in, they are redirected to the home page.
 
-## Learn More
+2. **Dashboard**: Upon logging in, users are directed to a dashboard where they can see their total calorie intake, total calories burned, and total workout duration. This information is pulled from Firebase and updated in real time.
 
-To learn more about Next.js, take a look at the following resources:
+3. **Tracking and Insights**:
+   - Users log food intake and workouts, with calories and duration stored in Firebase.
+   - The app calculates potential weight gain/loss projections based on caloric intake vs. burn rates and displays the results through visual charts.
+   - Users can view weekly summaries, trends, and insights to understand their progress better and make adjustments to their routines.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Visual Feedback**: The app utilizes Chart.js to provide two key visual insights:
+   - Projected weight gain if a calorie surplus is detected.
+   - Projected weight loss if there is a calorie deficit.
+   - These projections, shown in a line chart format, allow users to visualize trends over weeks, helping them stay motivated and informed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **UI and User Experience**: 
+   - Sidebar navigation allows users to easily switch between different areas of the app.
+   - Intuitive UI elements, such as progress circles and icon-labeled cards, make the app easy to use.
+   - Tailwind CSS styling ensures the app is visually appealing and fully responsive across devices.
 
-## Deploy on Vercel
+### Overall Impact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Mind Body Thrive provides a holistic solution that combines fitness, nutrition, and mental wellness into one accessible platform, guiding users towards balanced health and making wellness management easier and more effective. The app’s integration of intuitive visuals, real-time updates, and personal insights empowers users to take control of their wellness journey with clarity and motivation.
