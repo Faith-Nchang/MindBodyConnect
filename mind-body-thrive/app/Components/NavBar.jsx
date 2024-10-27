@@ -7,7 +7,6 @@ import { SignedIn, SignedOut } from '@clerk/clerk-react';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
-
   const signUpClick = () => {
     router.push('/sign-up');
   };
