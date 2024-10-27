@@ -26,30 +26,32 @@ export default function GroupDetail() {
 
   useEffect(() => {
     if (id) {
-      const fetchGroup = async () => {
-        const groupRef = doc(db, 'groups', id);
-        const groupSnapshot = await getDoc(groupRef);
-
-        if (groupSnapshot.exists()) {
-          const groupData = groupSnapshot.data();
-          setGroup(groupData);
-
-          // Load messages into state
-          setMessages(groupData.messages || []);
-
-          // Check if the current user is a member
-          const members = groupData.members || [];
-          setIsMember(members.some(member => member.id === userId));
-        } else {
-          console.error("No such group!");
-          router.push('/groups'); // Redirect to groups if the group does not exist
-        }
-        setLoading(false);
-      };
+      
 
       fetchGroup();
     }
   }, [id, userId, router]);
+
+  const fetchGroup = async () => {
+    const groupRef = doc(db, 'groups', id);
+    const groupSnapshot = await getDoc(groupRef);
+
+    if (groupSnapshot.exists()) {
+      const groupData = groupSnapshot.data();
+      setGroup(groupData);
+
+      // Load messages into state
+      setMessages(groupData.messages || []);
+
+      // Check if the current user is a member
+      const members = groupData.members || [];
+      setIsMember(members.some(member => member.id === userId));
+    } else {
+      console.error("No such group!");
+      router.push('/groups'); // Redirect to groups if the group does not exist
+    }
+    setLoading(false);
+  };
 
   const joinGroup = async () => {
     if (!isMember && userId) {
@@ -59,6 +61,7 @@ export default function GroupDetail() {
         members: [...(group.members || []), { id: userId, name: user.firstName }],
       });
       setIsMember(true);
+      fetchGroup(); // Fetch the group again to update the UI
     }
   };
 
