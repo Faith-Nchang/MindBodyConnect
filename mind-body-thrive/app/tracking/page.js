@@ -18,8 +18,9 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '@clerk/nextjs'; // Import Clerk for authentication
 import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 import db from "@/firebase";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 
 export default function Tracking() {
   const { userId } = useAuth();
@@ -30,6 +31,13 @@ export default function Tracking() {
   const [nutrition, setNutrition] = useState([]);
   const [food, setFood] = useState('');
   const [calories, setCalories] = useState('');
+  const router = useRouter();
+  const { user } = useUser();
+
+  if (!user ) {
+    router.push('/sign-in');
+   
+  }
 
 
   // Fetch data on load

@@ -109,6 +109,12 @@ export default function GroupDetail() {
     return <div>No group found</div>;
   }
 
+
+  if (!user ) {
+    router.push('/sign-in');
+    
+  }
+
   return (
     <div className="flex">
       <Sidebar />

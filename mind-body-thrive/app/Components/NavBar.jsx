@@ -36,7 +36,7 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="hidden md:flex space-x-6">
-          <Link href="/" className="hover:text-teal-600">Home</Link>
+      
           {/* <Link href="/features" className="hover:text-teal-600">Features</Link>
           <Link href="/about" className="hover:text-teal-600">About</Link>
           <Link href="/contact" className="hover:text-teal-600">Contact</Link> */}

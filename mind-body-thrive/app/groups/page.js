@@ -2,11 +2,12 @@
 'use client';
 import Sidebar from '../Components/Sidebar';
 import { userButton } from '@clerk/nextjs';
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
 import db from "@/firebase";
-import { useRouter } from 'next/navigation';
-import { useUser } from '@clerk/nextjs'; // Import useUser hook from Clerk
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -24,6 +25,7 @@ import { doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+
 export default function Groups() {
   const { user } = useUser(); // Get the current user from Clerk
   const [yourGroups, setYourGroups] = useState([]);
@@ -31,6 +33,12 @@ export default function Groups() {
   const [newGroupName, setNewGroupName] = useState('');
   const [newGroupDescription, setNewGroupDescription] = useState('');
   const router = useRouter();
+ 
+  useEffect(() => {
+    if (!user) {
+      router.push('/sign-in'); // Redirect to sign-in page if user is not signed in
+    }
+  }, [user, router]);
 
   useEffect(() => {
     const groupsRef = collection(db, 'groups');
@@ -99,7 +107,7 @@ export default function Groups() {
         
         <Dialog>
           <DialogTrigger asChild>
-            <Button>Create New Group</Button>
+            <Button className="mb-6">Create New Group</Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>

@@ -6,6 +6,8 @@ import { SignedOut, SignedIn, UserButton, useUser } from '@clerk/nextjs';
 import Sidebar from '../components/Sidebar';
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+
+
 import {
   Button,
 } from "@/components/ui/button";
@@ -13,6 +15,12 @@ import {
 export default function Support() {
   const router = useRouter();
   const { user } = useUser();
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/sign-in');
+    }
+  }, [user, router]);
 
   const [messages, setMessages] = useState([
     {

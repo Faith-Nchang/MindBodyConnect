@@ -7,6 +7,8 @@ import Sidebar from "../Components/Sidebar";
 import { UserButton } from "@clerk/nextjs";
 import { FaBurn, FaUtensils, FaClock } from "react-icons/fa";
 import { Line } from 'react-chartjs-2';
+
+import { useRouter } from 'next/navigation';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -29,11 +31,16 @@ ChartJS.register(
   Legend
 );
 
+
+
 export default function Dashboard() {
-  const { user } = useUser();
+
   const [totalCaloriesIntake, setTotalCaloriesIntake] = useState(0);
   const [totalCaloriesBurned, setTotalCaloriesBurned] = useState(0);
   const [totalWorkoutDuration, setTotalWorkoutDuration] = useState(0);
+  const router = useRouter();
+  const { user } = useUser();
+  
 
   useEffect(() => {
     if (user) {
@@ -69,9 +76,13 @@ export default function Dashboard() {
           console.error("Error fetching user data:", error);
         }
       };
-  
+     
       fetchUserData();
     }
+    else {
+      return
+    }
+
   }, [user]);
   
 
