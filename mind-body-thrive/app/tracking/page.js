@@ -1,6 +1,6 @@
 'use client'; // Ensure this component is rendered on the client side
 
-import Sidebar from '../components/Sidebar';
+import CustomSidebar from '../components/Sidebar';
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -89,7 +89,7 @@ export default function Tracking() {
 
   return (
     <div className="flex">
-      <Sidebar />
+      <CustomSidebar />
       <main className="ml-64 p-8 w-full bg-gray-100 min-h-screen">
         <div>
           <h1 className="text-2xl font-bold">Track your gym workouts and calories</h1>

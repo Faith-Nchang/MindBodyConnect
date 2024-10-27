@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
-import Sidebar from '../../components/Sidebar';
+import CustomSidebar from '../../components/Sidebar';
 import { useParams } from 'next/navigation'; // Import useParams
 
 export default function GroupDetail() {
@@ -117,7 +117,7 @@ export default function GroupDetail() {
 
   return (
     <div className="flex">
-      <Sidebar />
+      <CustomSidebar />
       <main className="ml-64 p-8 w-full bg-gray-100 min-h-screen">
         <div className="mt-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold">Welcome to {group.name}</h1>

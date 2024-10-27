@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { SignedOut, SignedIn, UserButton, useUser } from '@clerk/nextjs';
-import Sidebar from '../components/Sidebar';
+import CustomSidebar from '../components/Sidebar';
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -110,7 +110,7 @@ export default function Support() {
 
   return (
     <div className="flex">
-      <Sidebar />
+      <CustomSidebar />
       <main className="ml-64 p-8 w-full bg-gray-100 min-h-screen">
         <div className="flex flex-col">
           <div className="flex items-center mb-4">

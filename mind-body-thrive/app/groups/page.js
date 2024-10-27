@@ -1,6 +1,6 @@
 // pages/groups.js
 'use client';
-import Sidebar from '../Components/Sidebar';
+import CustomSidebar from '../Components/Sidebar';
 import { userButton } from '@clerk/nextjs';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
@@ -100,7 +100,7 @@ export default function Groups() {
 
   return (
     <div className="flex">
-      <Sidebar />
+      <CustomSidebar />
       <main className="ml-64 p-8 w-full bg-gray-100 min-h-screen">
         <h1 className="text-3xl font-bold mb-4">Groups</h1>
         <p>Welcome to your groups! This is where you can find others with common health and fitness goals.</p>

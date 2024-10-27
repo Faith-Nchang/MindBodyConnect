@@ -40,6 +40,7 @@ export default function Navbar() {
           {/* <Link href="/features" className="hover:text-teal-600">Features</Link>
           <Link href="/about" className="hover:text-teal-600">About</Link>
           <Link href="/contact" className="hover:text-teal-600">Contact</Link> */}
+
           <SignedIn>
             <Link href="/dashboard" className="hover:text-teal-600">Dashboard </Link>
             </SignedIn>

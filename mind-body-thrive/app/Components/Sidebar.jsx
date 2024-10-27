@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { UserButton } from '@clerk/nextjs';
 
-export default function Sidebar() {
+export default function CustomSidebar() {
  
 
   return (

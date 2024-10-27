@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { useUser } from "@clerk/nextjs";
 import db from "@/firebase";
-import Sidebar from "../Components/Sidebar";
+import CustomSidebar from "../Components/Sidebar";
 import { UserButton } from "@clerk/nextjs";
 import { FaBurn, FaUtensils, FaClock } from "react-icons/fa";
 import { Line } from 'react-chartjs-2';
@@ -112,7 +112,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex">
-      <Sidebar />
+      <CustomSidebar />
       <main className="ml-64 p-8 w-full bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen">
         <header className="flex justify-between items-center mb-8">
           <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
