@@ -95,11 +95,11 @@ export default function Groups() {
       <Sidebar />
       <main className="ml-64 p-8 w-full bg-gray-100 min-h-screen">
         <h1 className="text-3xl font-bold mb-4">Groups</h1>
-        <p>Welcome to your dashboard! This is where you can manage your activities.</p>
+        <p>Welcome to your groups! This is where you can find others with common health and fitness goals.</p>
         
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="outline">Create New Group</Button>
+            <Button>Create New Group</Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
