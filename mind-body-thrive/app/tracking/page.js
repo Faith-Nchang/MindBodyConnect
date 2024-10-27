@@ -30,7 +30,7 @@ export default function Tracking() {
   const [nutrition, setNutrition] = useState([]);
   const [food, setFood] = useState('');
   const [calories, setCalories] = useState('');
-  const [view, setView] = useState('sets');
+
 
   // Fetch data on load
   useEffect(() => {
