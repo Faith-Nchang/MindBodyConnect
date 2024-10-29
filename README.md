@@ -1,7 +1,7 @@
 #### Mind Body Thrive
 
 ## Story
-As people enthusiastic about both physical and mental health wellness, we were interested in building something that not only allows us to keep track of our health and progress, but also find others with similar interests for accountability and social support. Although  fitness apps have fitness tracking, mental health support especially through AI, or both. Some wellness apps often lack a holistic approach, forcing users to juggle multiple platforms for fitness, mental health, or social engagement, which creates a fragmented experience. Additionally, limited support for motivation, goal setting, and access to nearby resources can make it difficult for users to stay consistent in their wellness routines and self-care practices.
+As people enthusiastic about both physical and mental health wellness, we were interested in building something that not only allows us to keep track of our health and progress, but also find others with similar interests for accountability and social support.
 
 # How Mind Body Thrive Solves the Problem
 Mind Body Thrive not only provides a way for users to track their workouts, calories burned, and nutritional intake and get insights about the likelihood of gaining or losing weight, but it also provides two means of mental health support: accountability and social interactions. In Mind Body Thrive, users can get advice and have discussions from a conversational chatbot. As a means of peer and social interaction, finding others with similar interests, and sharing their progress, users can join groups with similar interests and support each other to attain their fitness goals.
