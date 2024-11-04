@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
-import CustomSidebar from '../../components/Sidebar';
+import CustomSidebar from '../../components/CustomSidebar';
 import { useParams } from 'next/navigation'; // Import useParams
 
 export default function GroupDetail() {
