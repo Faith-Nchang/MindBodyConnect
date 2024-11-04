@@ -1,6 +1,6 @@
 // pages/groups.js
 'use client';
-import CustomSidebar from '../Components/Sidebar';
+import CustomSidebar from '../Components/CustomSidebar';
 import { userButton } from '@clerk/nextjs';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
