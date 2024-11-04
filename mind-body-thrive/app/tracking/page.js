@@ -1,6 +1,6 @@
 'use client'; // Ensure this component is rendered on the client side
 
-import CustomSidebar from '../components/Sidebar';
+import CustomSidebar from '../components/CustomSidebar';
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
