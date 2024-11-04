@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { useUser } from "@clerk/nextjs";
 import db from "@/firebase";
-import CustomSidebar from "../Components/Sidebar";
+import CustomSidebar from "../Components/CustomSidebar";
 import { UserButton } from "@clerk/nextjs";
 import { FaBurn, FaUtensils, FaClock } from "react-icons/fa";
 import { Line } from 'react-chartjs-2';
