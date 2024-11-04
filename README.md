@@ -41,6 +41,3 @@ Tech Stack
    - Intuitive UI elements, such as progress circles and icon-labeled cards, make the app easy to use.
    - Tailwind CSS styling ensures the app is visually appealing and fully responsive across devices.
 
-### Overall Impact
-
-Mind Body Thrive provides a holistic solution that combines fitness, nutrition, social interaction, and mental wellness into one accessible platform, guiding users towards balanced health and making wellness management easier and more effective. The app’s integration of intuitive visuals, real-time updates, and personal insights empowers users to take control of their wellness journey with clarity and motivation.
