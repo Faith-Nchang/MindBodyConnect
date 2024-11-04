@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { SignedOut, SignedIn, UserButton, useUser } from '@clerk/nextjs';
-import CustomSidebar from '../components/Sidebar';
+import CustomSidebar from '../components/CustomSidebar';
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
