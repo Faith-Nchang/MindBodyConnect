@@ -12,7 +12,7 @@ Tech Stack
 - **Backend**: Firebase (for database storage, user authentication, and real-time data handling)
 - **APIs & Libraries**:
   - Firebase Firestore for database management
-  - Clerk/propelauth for user authentication
+  - Clerk for user authentication
   - Chart.js for interactive and responsive charting
   - Tailwind CSS for modern and clean UI styling
 - **Additional Tools**: React Icons for UI elements, dotenv for managing environment variables
