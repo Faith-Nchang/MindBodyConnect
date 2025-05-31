@@ -26,15 +26,7 @@ Tech Stack
 4. **Groups**: users can create/join groups with similar interests. Within each group, users can have conversations with each other. This serves as a means of accountability, social support, and collaborative growth in their wellness journey.
 5. **Conversational Chatbot**: Users can also interact with the app in a conversational manner, enabling them to get advice about work routines, nutrition, or mental health.
 
-6. **Tracking and Insights**:
-   - Users log food intake and workouts, with calories and duration stored in Firebase.
-   - The app calculates potential weight gain/loss projections based on caloric intake vs. burn rates and displays the results through visual charts.
-   - Users can view weekly summaries, trends, and insights to understand their progress better and make adjustments to their routines.
 
-7. **Visual Feedback**: The app utilizes Chart.js to provide two key visual insights:
-   - Projected weight gain if a calorie surplus is detected.
-   - Projected weight loss if there is a calorie deficit.
-   - These projections, shown in a line chart format, allow users to visualize trends over weeks, helping them stay motivated and informed.
 
 8. **UI and User Experience**: 
    - Sidebar navigation allows users to easily switch between different areas of the app.
